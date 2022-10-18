@@ -26,7 +26,7 @@ until num == 55
     # afficher l'array
     p array
     # persister les données dans la DB
-    CSV.open(filepath, "wb") do |csv|
+    CSV.open(filepath, "ab") do |csv|
         csv << array
     end
 end
