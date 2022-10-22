@@ -5,13 +5,11 @@ filepath = "data/number.csv"
 num = 0
 array = []
 array2 = []
-browser = 'Safari/5.0 (Macintosh; Intel Mac OS X 10_8_4)
-AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1'
 
 until num == 55
     url = "https://musiquesactuelles.net/annuaire-des-artistes-structures-musiques-actuelles-du-grand-est/pg/#{num}/"
     num += 1
-    html_file = URI.open(url).read
+    html_file = URI.open(url, "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36").read
     html_doc = Nokogiri::HTML(html_file)
     html_doc.search(".phone-number-block .value").each do |element|
         array << element.text.strip
